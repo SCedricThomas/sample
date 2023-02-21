@@ -4,8 +4,8 @@ on:
   pull_request:
 
 jobs:
-  golangci:
-    name: lint
+  crash:
+    name: crash
     runs-on: ubuntu-latest
     steps:
       - name: crash
