@@ -1,0 +1,19 @@
+name: crash
+
+on:
+  pull_request:
+
+jobs:
+  crash:
+    name: crash
+    runs-on: ubuntu-latest
+    steps:
+      - name: crash
+        run: "sleep 20 && exit 1"
+  aborted:
+    name: aborted
+    needs: crash
+    runs-on: ubuntu-latest
+    steps:
+      - name: crash
+        run: "echo Hello"
