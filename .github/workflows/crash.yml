@@ -1,0 +1,12 @@
+name: golangci-lint
+
+on:
+  pull_request:
+
+jobs:
+  golangci:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: crash
+        run: "exit 1"
