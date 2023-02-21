@@ -12,6 +12,7 @@ jobs:
         run: "sleep 20 && exit 1"
   aborted:
     name: aborted
+    needs: crash
     runs-on: ubuntu-latest
     steps:
       - name: crash
