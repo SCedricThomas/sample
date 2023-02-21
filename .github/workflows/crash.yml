@@ -9,4 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: crash
-        run: "exit 1"
+        run: "sleep 20 && exit 1"
+  aborted:
+    name: aborted
+    runs-on: ubuntu-latest
+    steps:
+      - name: crash
+        run: "echo Hello"
