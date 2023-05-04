@@ -6,7 +6,7 @@
   "website": "https://scalingo.com",
   "addons": [
     {
-      "plan": "fake:mongo-starter-256",
+      "plan": "fakes:mongo-starter-256",
       "options": {
         "version": "4.0.16-1"
       }
@@ -15,7 +15,7 @@
   "formation": {
     "web": {
       "amount": 1,
-      "size": "fake2"
+      "size": "S"
     }
   }
 }
