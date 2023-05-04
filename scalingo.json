@@ -4,6 +4,14 @@
   "logo": "https://scalingo.com/logo.svg",
   "repository": "https://github.com/Scalingo/sample-go-gin",
   "website": "https://scalingo.com",
+  "addons": [
+    {
+      "plan": "fake:mongo-starter-256",
+      "options": {
+        "version": "4.0.16-1"
+      }
+    }
+  ],
   "formation": {
     "web": {
       "amount": 1,
