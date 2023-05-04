@@ -6,7 +6,7 @@
   "website": "https://scalingo.com",
   "addons": [
     {
-      "plan": "mongodb:mongo-starter-2561",
+      "plan": "mongodb:mongo-starter-256",
       "options": {
         "version": "4.0.16-1"
       }
