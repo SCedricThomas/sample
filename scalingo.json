@@ -6,7 +6,7 @@
   "website": "https://scalingo.com",
   "addons": [
     {
-      "plan": "mongodb:sandbox",
+      "plan": "mongodb:mongo-sandbox",
       "options": {
         "version": "4.0.16-1"
       }
