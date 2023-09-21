@@ -1,1 +1,1 @@
-web: sample-go-gin
+web: node index.js
