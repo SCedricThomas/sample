@@ -1,7 +1,10 @@
 var express = require('express')
 var app = express()
+var child_process = require('child_process')
 
 app.get('/', function (req, res) {
+  const process = child_process.spawn("xclock")
+  process.kill('SIGKILL') 
   res.send('Hello World!')
 })
 
