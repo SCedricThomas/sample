@@ -1,1 +1,1 @@
-web: node index.js
+web: xvfb-run node index.js
