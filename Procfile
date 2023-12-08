@@ -1,1 +1,1 @@
-web: "gunicorn mydjango.asgi --worker-class=uvicorn.workers.UvicornWorker --log-file -"
+web: gunicorn mydjango.wsgi --log-file -
