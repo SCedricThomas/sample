@@ -1,7 +1,0 @@
-eo:
-  activemodel:
-    attributes:
-      oauth_application:
-        organization_logo: Organizaĵa emblemo (kvadrata)
-        organization_url: Organizo URL
-        redirect_uri: Adresado URL

@@ -1,5 +1,0 @@
-var $proposals = $('#proposals');
-var $orderFilterInput = $('.order_filter');
-
-$proposals.html('<%= j(render partial: "proposals").strip.html_safe %>');
-$orderFilterInput.val('<%= order %>');

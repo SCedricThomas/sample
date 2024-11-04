@@ -1,6 +1,0 @@
-autolabeler
-github
-https
-ssh
-ubuntu
-workarounds

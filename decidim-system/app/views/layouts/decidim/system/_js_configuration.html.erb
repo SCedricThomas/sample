@@ -1,9 +1,0 @@
-<%
-js_configs = {
-  icons_path: Decidim.cors_enabled ? "" : asset_pack_path("media/images/remixicon.symbol.svg")
-}
-%>
-
-<script>
-  Decidim.config.set(<%== js_configs.to_json %>);
-</script>

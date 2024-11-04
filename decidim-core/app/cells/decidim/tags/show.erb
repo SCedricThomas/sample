@@ -1,7 +1,0 @@
-<section class="layout-main__section">
-  <%= content_tag :ul, class: tags_classes, data: { tags: "" } do %>
-    <% taxonomies.each do |tax| %>
-      <%= content_tag :li, link_to_tag(tax[:url], tax[:name], t("decidim.tags.filter_results_for_taxonomy", resource: tax[:name])) %>
-    <% end %>
-  <% end %>
-</section>

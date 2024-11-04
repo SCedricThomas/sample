@@ -1,7 +1,0 @@
-name: en
-title: "Decidim Documentation"
-version: develop
-asciidoc:
-  attributes:
-    page-lang: en@
-

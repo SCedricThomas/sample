@@ -1,2 +1,0 @@
-inherit_gem:
-  decidim-dev: rubocop-decidim.yml
