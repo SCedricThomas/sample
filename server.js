@@ -23,6 +23,10 @@ const app = express();
 
 // Configure your Express app
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+})
+
 const server = app.listen(port, () => {
 console.log(`Worker process ${process.pid} is listening on port 3000`);
 });
