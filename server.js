@@ -8,26 +8,28 @@ const numCPUs = os.cpus().length;
 const port = process.env.PORT ? process.env.PORT : 3000;
 
 if (cluster.isPrimary) {
-console.log(`Master process ${process.pid} is running`);
+    console.log(`Master process ${process.pid} is running`);
 
-for (let i = 0; i < numCPUs; i++) {
-cluster.fork();
-}
+    for (let i = 0; i < numCPUs; i++) {
+        const worker = cluster.fork();
+        worker.on('online', () => console.log('*** worker online ***'));
+        worker.on('listening', (data) => console.log('*** worker listening ***', data));
+    }
 
-cluster.on('exit', (worker) => {
-console.log(`Worker process ${worker.process.pid} died. Restarting...`);
-cluster.fork();
-});
+    cluster.on('exit', (worker) => {
+        console.log(`Worker process ${worker.process.pid} died. Restarting...`);
+        cluster.fork();
+    });
 } else {
-const app = express();
+    const app = express();
 
-// Configure your Express app
+    // Configure your Express app
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
+    app.get('/', (req, res) => {
+        res.send('Hello World!');
+    })
 
-const server = app.listen(port, () => {
-console.log(`Worker process ${process.pid} is listening on port 3000`);
+    const server = app.listen(port, () => {
+    console.log(`Worker process ${process.pid} is listening on port 3000`);
 });
 }
