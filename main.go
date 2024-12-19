@@ -47,7 +47,7 @@ func main() {
 		panic("this is crashing")
 	}
 
-	port := "3001"
+	port := "3000"
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
 	}
