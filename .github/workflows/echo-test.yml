@@ -1,0 +1,14 @@
+
+name: Echo Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo test
+        run: echo "test"
+
