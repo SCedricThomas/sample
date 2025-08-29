@@ -1,8 +1,6 @@
-# Sample Application with Ruby on Rails
+# Sample Application with Go and Gin
 
-Ruby Version 3.2.2
-
-This sample is running on: https://ruby-rails.is-easy-on-scalingo.com/
+This sample is running on: https://go-gin.is-easy-on-scalingo.com/
 
 ## Deploy via Git
 
@@ -17,14 +15,13 @@ And that's it!
 
 ## Deploy via One-Click
 
-[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://dashboard.scalingo.com/create/app?source=https://github.com/Scalingo/sample-ruby-rails#master)
+[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy)
 
 ## Running Locally
 
 ```shell
-docker compose run web bundle install
-docker compose up
+docker-compose up
 ```
 
-The app listens by default on the port 8080 or the one defined in the `PORT`
+The app listens by default on the port 3000 or the one defined in the `PORT`
 environment variable.

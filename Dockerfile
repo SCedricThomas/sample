@@ -1,9 +1,8 @@
-FROM ruby:3.2.2
+FROM golang:1.24
 
-LABEL maintainer etienne@scalingo.com
-
-RUN apt-get update && apt-get install -y nodejs
-
-COPY Gemfile Gemfile.lock /usr/src/app/
-
-WORKDIR /usr/src/app
+RUN go install github.com/cespare/reflex@latest
+ADD . /go/src/github.com/Scalingo/sample-go-gin
+WORKDIR /go/src/github.com/Scalingo/sample-go-gin
+EXPOSE 3000
+RUN go install -buildvcs=false
+CMD /go/bin/sample-go-gin

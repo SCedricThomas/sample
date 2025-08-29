@@ -1,7 +1,13 @@
 {
-  "name": "Sample Ruby Rails",
-  "description": "Sample Ruby web application using the Rails framework",
+  "name": "Sample Go Gin",
+  "description": "Sample web application using the Go framework Gin",
   "logo": "https://scalingo.com/logo.svg",
-  "repository": "https://github.com/Scalingo/sample-ruby-rails",
-  "website": "https://ruby-rails.is-easy-on-scalingo.com/"
+  "repository": "https://github.com/Scalingo/sample-go-gin",
+  "website": "https://scalingo.com",
+  "formation": {
+    "web": {
+      "amount": 1,
+      "size": "S"
+    }
+  }
 }
