@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Randomized delay (simulate CI wait)
-        run: sleep $(( RANDOM % 31 + 30 )) # 30–60s
+        run: sleep $(( RANDOM % 21 )) # < 20s
       - name: Fake Checks
         run: echo "Checks completed successfully."
 
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Randomized delay (simulate CI wait)
-        run: sleep $(( RANDOM % 61 + 120 )) # 120–180s
+        run: sleep $(( RANDOM % 11 )) # < 10s
       - name: Fake Specs
         run: echo "Specs executed successfully."
       - name: Fake Coverage Summary
