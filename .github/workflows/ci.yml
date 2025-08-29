@@ -1,0 +1,29 @@
+name: 'CI'
+
+on:
+  push:
+    branches: [prod, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Randomized delay (simulate CI wait)
+        run: sleep $(( RANDOM % 31 + 30 )) # 30–60s
+      - name: Fake Checks
+        run: echo "Checks completed successfully."
+
+  specs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Randomized delay (simulate CI wait)
+        run: sleep $(( RANDOM % 61 + 120 )) # 120–180s
+      - name: Fake Specs
+        run: echo "Specs executed successfully."
+      - name: Fake Coverage Summary
+        run: |
+          echo "## Code Coverage Summary" >> $GITHUB_STEP_SUMMARY
+          echo "Line Coverage: 84.2%" >> $GITHUB_STEP_SUMMARY
+          echo "Branch Coverage: 79.5%" >> $GITHUB_STEP_SUMMARY
