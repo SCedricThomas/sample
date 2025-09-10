@@ -1,0 +1,6 @@
+# This will be inserted inside http { ... } of Scalingo's default nginx.conf
+
+limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+
+gzip on;
+gzip_types text/plain text/css application/json application/javascript;
