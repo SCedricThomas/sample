@@ -1,1 +1,1 @@
-web: tempo -config.expand-env=true -config.file=/app/tempo.yaml
+web: sample-go-gin
