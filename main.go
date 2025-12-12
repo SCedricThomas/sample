@@ -48,6 +48,9 @@ func main() {
 	}
 
 	port := "3000"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
 
 	listener, err := net.Listen("tcp", ":"+port)
 	if err != nil {
