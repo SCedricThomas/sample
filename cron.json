@@ -1,0 +1,7 @@
+{
+  "jobs": [
+    {
+      "command": "*/10 * * * * /bin/bash ./scripts/debug_dns_allowlist.sh"
+    }
+  ]
+}

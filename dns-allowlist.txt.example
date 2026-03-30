@@ -1,0 +1,5 @@
+# One domain per line.
+# Only put domains you explicitly want to debug.
+db.internal.example
+redis.internal.example
+api.internal.example
