@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net"
@@ -27,6 +26,7 @@ func isPrime(value int) bool {
 func main() {
 	m := gin.Default()
 	m.LoadHTMLGlob("templates/*")
+	srv := &http.Server{Handler: m, ReadHeaderTimeout: 10 * time.Second}
 
 	m.GET("/", func(c *gin.Context) {
 		waitQuery := c.Request.URL.Query().Get("wait")
@@ -53,42 +53,17 @@ func main() {
 		port = os.Getenv("PORT")
 	}
 
-	server := &http.Server{Handler: m}
-
-	listeners := make([]net.Listener, 0, 2)
-
-	primaryListener, err := net.Listen("tcp", ":"+port)
+	listener, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		panic(err)
 	}
-	listeners = append(listeners, primaryListener)
 
-	if port != "80" {
-		listener80, err := net.Listen("tcp", ":80")
-		if err != nil {
-			log.Printf("Could not listen on port 80: %v", err)
-		} else {
-			listeners = append(listeners, listener80)
-		}
-	}
+	go srv.Serve(listener)
+	log.Println("Listening on 0.0.0.0:" + port)
 
-	for _, l := range listeners {
-		go func(l net.Listener) {
-			if err := server.Serve(l); err != nil && err != http.ErrServerClosed {
-				log.Printf("HTTP server error on %s: %v", l.Addr().String(), err)
-			}
-		}(l)
-		log.Printf("Listening on %s", l.Addr().String())
-	}
-
-	sigs := make(chan os.Signal, 1)
-	signal.Notify(sigs, syscall.SIGTERM, syscall.SIGINT)
+	sigs := make(chan os.Signal)
+	signal.Notify(sigs, syscall.SIGTERM)
 	<-sigs
-	fmt.Println("Signal received, time to shutdown")
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := server.Shutdown(ctx); err != nil {
-		log.Printf("Shutdown error: %v", err)
-	}
+	fmt.Println("SIGTERM, time to shutdown")
+	listener.Close()
 }
