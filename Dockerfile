@@ -1,8 +1,12 @@
-FROM golang:1.26-bookworm
+FROM python:3.13-slim-bookworm
 WORKDIR /app
-COPY go.mod main.go ./
-ENV CGO_ENABLED=0
-RUN go build -trimpath -o /app/server .
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY requirements.txt ./
+RUN python -m pip install --no-cache-dir -r requirements.txt
+COPY manage.py ./
+COPY config/ ./config/
+COPY web/ ./web/
+RUN python manage.py collectstatic --noinput
 ENV PORT=8080
 EXPOSE 8080
-CMD ["/app/server"]
+CMD ["/bin/sh", "-c", "exec python -m gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8080}"]
